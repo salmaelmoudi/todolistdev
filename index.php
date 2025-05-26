@@ -168,7 +168,7 @@
     </div>
     <footer>
         Réalisé avec ❤️ en PHP, HTML, CSS, et JavaScript.<br>
-        &copy; <?php echo date('Y'); ?> Chafiq Hamza & Youssef Khalid
+        &copy; <?php echo date('Y'); ?> Salma El Moudi & Zineb Chadery & Yassine Alahy
     </footer>
 
     <script>
