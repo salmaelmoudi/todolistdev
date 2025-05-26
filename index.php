@@ -103,7 +103,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>my to-do list</h1>
+        <h1>salma to-do list</h1>
         <form id="todo-form" autocomplete="off" onsubmit="return false;">
             <input type="text" id="todo-input" placeholder="Ajouter une tâche..." />
             <button id="add-btn">Ajouter</button>
