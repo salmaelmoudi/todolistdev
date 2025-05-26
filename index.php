@@ -4,106 +4,153 @@
     <meta charset="UTF-8">
     <title>Ma To-Do List</title>
     <style>
+        /* Fonts & Base Reset */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background: #f4f4f4;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
             display: flex;
-            height: 100vh;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            color: #333;
         }
+
         .container {
-            background: #fff;
-            padding: 40px 60px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            background: #ffffffcc;
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 420px;
             text-align: center;
-            min-width: 350px;
         }
+
         h1 {
-            color: #3498db;
-            margin-bottom: 20px;
-            font-size: 2.2em;
-            letter-spacing: 2px;
+            font-size: 2.5em;
+            color: #6c63ff;
+            margin-bottom: 25px;
         }
+
         #todo-form {
             display: flex;
-            justify-content: center;
+            gap: 0;
             margin-bottom: 20px;
         }
+
         #todo-input {
-            padding: 10px;
-            font-size: 1em;
-            border: 1px solid #ddd;
-            border-radius: 6px 0 0 6px;
-            outline: none;
-            width: 70%;
-        }
-        #add-btn {
-            padding: 10px 18px;
+            flex: 1;
+            padding: 12px 16px;
             font-size: 1em;
             border: none;
-            background: #3498db;
-            color: #fff;
-            border-radius: 0 6px 6px 0;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            outline: none;
+            background: #f0f0f0;
+        }
+
+        #add-btn {
+            padding: 12px 20px;
+            border: none;
+            background: #6c63ff;
+            color: white;
+            font-weight: 600;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.3s;
         }
+
         #add-btn:hover {
-            background: #217dbb;
+            background: #574fd6;
         }
+
         ul {
             list-style: none;
             padding: 0;
+            margin-top: 10px;
         }
+
         li {
-            background: #f9f9f9;
-            margin-bottom: 10px;
-            padding: 12px 16px;
-            border-radius: 6px;
+            background: #f7f7ff;
+            margin-bottom: 12px;
+            padding: 14px 18px;
+            border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.1em;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
+
         .delete-btn {
-            background: #e74c3c;
-            color: #fff;
+            background: #ff6b6b;
             border: none;
-            border-radius: 4px;
+            color: white;
             padding: 6px 12px;
-            cursor: pointer;
-            font-size: 0.95em;
-            transition: background 0.2s;
-        }
-        .delete-btn:hover {
-            background: #c0392b;
-        }
-        .empty {
-            color: #aaa;
-            font-style: italic;
-            margin-top: 20px;
-        }
-        .info-section {
-            margin-top: 30px;
-            padding: 18px 24px;
-            background: #eaf6fb;
             border-radius: 8px;
-            color: #217dbb;
-            font-size: 1.05em;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
         }
-        footer {
-            margin-top: 40px;
-            color: #888;
+
+        .delete-btn:hover {
+            background: #d94343;
+        }
+
+        .empty {
+            font-style: italic;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        .info-section {
+            background: #fff7e6;
+            color: #d9822b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
             font-size: 0.95em;
-            text-align: center;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.85em;
+            color: #555;
+        }
+
+        #reset-btn {
+            margin-top: 20px;
+            background: #ffa502;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #reset-btn:hover {
+            background: #e08900;
+        }
+
+        #task-count {
+            margin-top: 12px;
+            font-weight: 500;
+            color: #444;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>salma to-do list</h1>
+        <h1>🌸 Ma To-Do List</h1>
         <form id="todo-form" autocomplete="off" onsubmit="return false;">
             <input type="text" id="todo-input" placeholder="Ajouter une tâche..." />
             <button id="add-btn">Ajouter</button>
@@ -111,22 +158,26 @@
         <ul id="todo-list"></ul>
         <div id="empty-msg" class="empty">Aucune tâche pour le moment.</div>
         <div class="info-section">
-            <strong>Astuce :</strong> Click "DELETE" to delete a task.<br>
-            Appuyez sur <kbd>Entrée</kbd> pour ajouter rapidement une tâche.<br>
-            <br>
-            Cette application ne sauvegarde pas les tâches après le rechargement de la page.<br>
-            Pour une version persistante, bla bla bla .
+            <strong>Astuce :</strong> Cliquez sur "Supprimer" pour effacer une tâche.<br>
+            Appuyez sur <kbd>Entrée</kbd> pour ajouter rapidement une tâche.<br><br>
+            Cette version ne sauvegarde pas les tâches après rechargement.<br>
+            (Version persistante disponible avec une base de données)
         </div>
+        <button id="reset-btn">Tout effacer</button>
+        <div id="task-count">Nombre de tâches : 0</div>
     </div>
     <footer>
-        Réalisé avec  en PHP, HTML, CSS,et validation &amp; Js.<br>
-        &copy; <?php echo date('Y'); ?> Chafiq Hamza et youssef khalid
+        Réalisé avec ❤️ en PHP, HTML, CSS, et JavaScript.<br>
+        &copy; <?php echo date('Y'); ?> Chafiq Hamza & Youssef Khalid
     </footer>
+
     <script>
         const todoInput = document.getElementById('todo-input');
         const addBtn = document.getElementById('add-btn');
         const todoList = document.getElementById('todo-list');
         const emptyMsg = document.getElementById('empty-msg');
+        const resetBtn = document.getElementById('reset-btn');
+        const countDiv = document.getElementById('task-count');
 
         function updateEmptyMsg() {
             emptyMsg.style.display = todoList.children.length === 0 ? 'block' : 'none';
@@ -160,8 +211,11 @@
             return todoList.children.length;
         }
 
+        function updateCount() {
+            countDiv.textContent = "Nombre de tâches : " + getTodoCount();
+        }
+
         function resetTodos() {
-            // Supprime toutes les tâches côté client et côté serveur
             const items = Array.from(todoList.children);
             items.forEach(li => {
                 const id = li.dataset.id;
@@ -200,33 +254,8 @@
             }
         });
 
-        // Ajout d'un bouton pour réinitialiser la liste
-        const resetBtn = document.createElement('button');
-        resetBtn.textContent = 'Tout effacer';
-        resetBtn.style.marginTop = '18px';
-        resetBtn.style.background = '#f39c12';
-        resetBtn.style.color = '#fff';
-        resetBtn.style.border = 'none';
-        resetBtn.style.borderRadius = '6px';
-        resetBtn.style.padding = '8px 18px';
-        resetBtn.style.cursor = 'pointer';
-        resetBtn.onclick = () => {
-            resetTodos();
-        };
-        document.querySelector('.container').appendChild(resetBtn);
+        resetBtn.onclick = resetTodos;
 
-        // Affichage dynamique du nombre de tâches
-        const countDiv = document.createElement('div');
-        countDiv.style.marginTop = '12px';
-        countDiv.style.color = '#555';
-        countDiv.style.fontSize = '1em';
-        document.querySelector('.container').appendChild(countDiv);
-
-        function updateCount() {
-            countDiv.textContent = "Nombre de tâches : " + getTodoCount();
-        }
-
-        // Charger les tâches depuis la base de données au chargement de la page
         function loadTodos() {
             fetch('todo_api.php?action=list')
                 .then(res => res.json())
@@ -239,8 +268,6 @@
         }
 
         loadTodos();
-        updateEmptyMsg();
-        updateCount();
     </script>
 </body>
 </html>
