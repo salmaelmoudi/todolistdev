@@ -162,7 +162,7 @@
         </div>
     </div>
     <footer>
-        ✨ Réalisé avec ❤️ par Salma, Zineb & Yassine — projet devops <?php echo date('Y'); ?>
+        ✨ Réalisé avec , par Salma, Zineb & Yassine — projet devops <?php echo date('Y'); ?>
     </footer>
 
     <script>
